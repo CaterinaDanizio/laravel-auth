@@ -23,22 +23,25 @@
                         <form action="{{route('updateIcon')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
+                            <p>Choose your profile photo</p>
                             <input name="icon" type="file" class="form-control border-0">
-                            <input type="submit" value="SUBMIT">
+                            <input type="submit" class="btn btn-success" value="UPDATE">
+                            <a href="{{route('clearIcon')}}" class="btn btn-danger" value="CLEAR">CLEAR</a>
+
                         </form>
                     </div>
 
                     
                     @if (Auth::user()-> icon)
                        <div class="card-body">
-                            <h1>Here the profile photo you've chosen</h1>
-                            <img src="{{ asset('storage/icon/' . Auth::user()->icon )}}" alt="">
+                            <h3>Here the profile photo you've chosen</h3>
+                            <img src="{{ asset('storage/icon/' . Auth::user()->icon )}}" alt="" width="300px">
                        </div> 
                         
                     @else 
                         <div class="card-body">
-                            <h1>Here default profile photo</h1>
-                            <img src="{{ asset('storage/icon/avatar-placeholder.png')}}" alt="">
+                            <h3>Here default profile photo</h3>
+                            <img src="{{ asset('storage/icon/avatar-placeholder.png')}}" alt="" width="300px">
                        </div>       
                     @endif
 
